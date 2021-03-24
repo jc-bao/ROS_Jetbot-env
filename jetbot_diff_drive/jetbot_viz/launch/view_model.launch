@@ -1,0 +1,45 @@
+<launch>
+<!-- This file will bring up the robot description      -->
+<!-- and rviz, just the model                           -->
+  <!-- rviz configuration -->
+  <arg name="gui" default="true" />
+  <arg name="rvizconfig" default="$(find jetbot_viz)/rviz/model.rviz" />
+
+  <!-- arguments for the realsense camera to load -->
+  <arg name="pointcloud_enable" default="true" />
+  <arg name="realsense_enable" default="true" /> 
+  
+  <!-- arguments for lidar use -->
+  <arg name="lidar_enable" default="true" />
+  <arg name="visualize_laser" default="true" /> 
+  
+  <!-- argument for imu use -->
+  <arg name="imu_enable" default="true" />  
+  
+  <!-- argument for gps use -->
+  <arg name="gps_enable" default="true" />  
+  
+  <!-- argument for ultrasonic use -->
+  <arg name="ultrasonic_enable" default="true" /> 
+
+
+  <!-- Standalone launcher to visualize the robot model. -->
+  <include file="$(find jetbot_description)/launch/description.launch" >
+    <arg name="pointcloud_enable" value="$(arg pointcloud_enable)"/>
+    <arg name="realsense_enable" value="$(arg realsense_enable)"/>
+    <arg name="lidar_enable" value="$(arg lidar_enable)"/>
+    <arg name="visualize_laser" value="$(arg visualize_laser)"/>
+    <arg name="imu_enable" value="$(arg imu_enable)"/>
+    <arg name="gps_enable" value="$(arg gps_enable)"/>
+    <arg name="ultrasonic_enable" value="$(arg ultrasonic_enable)"/>
+  </include>
+
+  <!-- parses the urdf to the robot description in parameter server -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <!-- this will publish the joints -->
+  <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+  <node unless="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> 
+  <!-- this will launch rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" output="screen" />
+</launch>

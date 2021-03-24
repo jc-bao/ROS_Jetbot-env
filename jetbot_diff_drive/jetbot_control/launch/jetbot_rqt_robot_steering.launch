@@ -1,0 +1,9 @@
+<launch>
+  <!-- GUI to publish to the topic of cmd_vel to make the robot move  -->
+  <!-- The param name of the topic must be exact, otherwise the robot -->
+  <!-- will not move in the sim                                       -->
+  <node name="jetbot_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+    <param name="default_topic" value="/jetbot_velocity_controller/cmd_vel"/>
+  </node>  
+
+</launch>

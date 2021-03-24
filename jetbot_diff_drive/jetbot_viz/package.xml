@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>jetbot_viz</name>
+  <version>0.0.1</version>
+  <description>Visualization configuration for Clearpath Husky</description>
+
+  <author email="issaiass@hotmail.com">Rangel Alvarado</author>
+
+  <maintainer email="issaiass@hotmail.com">Rangel Alvarado</maintainer>
+
+  <license>CCSA2.0</license>
+
+  <url type="website">http://daqsyspty.com/</url>
+  <url type="bugtracker">https://github.com/issaias/jetbot_viz/issues</url>
+  <url type="repository">https://github.com/issaiass/jetbot_viz</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roslaunch</build_depend>
+  
+  <build_depend>jetbot_description</build_depend>
+  <build_depend>joint_state_publisher</build_depend>
+  <build_depend>robot_state_publisher</build_depend>
+
+  <build_export_depend>jetbot_description</build_export_depend>
+  <build_export_depend>joint_state_publisher</build_export_depend>
+  <build_export_depend>robot_state_publisher</build_export_depend>
+
+  <exec_depend>jetbot_description</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz</exec_depend>
+
+  <export>
+  </export>
+</package>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>jetbot_simulator</name>
+  <version>0.0.0</version>
+  <description>Metapackage for Jetbot AI Kit Simulation</description>
+
+  <maintainer email="issaiass@hotmail.com">Rangel Alvarado</maintainer>
+
+  <license>CCSA2.0</license>
+
+  <url type="website">http://daqsyspty.com/</url>
+  <url type="bugtracker">https://github.com/issaiass/jetbot_simulator/issues</url>
+  <url type="repository">https://github.com/issaiass/jetbot_simulator</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>jetbot_gazebo</exec_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+
+</package>

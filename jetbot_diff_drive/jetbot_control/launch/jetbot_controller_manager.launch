@@ -1,0 +1,14 @@
+<launch>
+  <!-- NOTE:  When you launch it alone it will throw an error -->
+  <!--      because we do not have any interface to attach    -->
+  <!--      you must call gazebo first and then this node     -->
+
+  <!-- Load controller configuration -->
+  <rosparam command="load" file="$(find jetbot_control)/config/control.yaml" />
+
+  <!-- Spawn controllers -->
+  <!-- the control manager arguments are the same as in the control.yaml file to work -->  
+  <node name="base_controller_spawner" pkg="controller_manager" type="spawner"
+        args="jetbot_joint_state_controller jetbot_velocity_controller"/>
+
+</launch>

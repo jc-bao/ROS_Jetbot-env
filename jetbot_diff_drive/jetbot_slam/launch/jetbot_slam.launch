@@ -1,0 +1,51 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="configuration_basename" default="jetbot_lds_2d.lua"/>
+  <arg name="slam_methods" default="gmapping" doc="slam type [gmapping, cartographer, hector, karto]"/>
+  <!-- rviz configuration -->
+  <arg name="rvizconfig" default="$(find jetbot_viz)/rviz/jetbot_$(arg slam_methods).rviz"/>
+  <!-- Sensors -->
+  <arg name="pointcloud_enable" default="true" />
+  <arg name="realsense_enable" default="true" /> 
+  <arg name="lidar_enable" default="true" />
+  <arg name="visualize_laser" default="true" /> 
+  <arg name="imu_enable" default="true" />  
+  <arg name="gps_enable" default="true" />  
+  <arg name="ultrasonic_enable" default="true" />
+  <!-- Position of the robot -->
+  <arg name="x" default="1.0"/>
+  <arg name="y" default="2.0"/>
+  <arg name="z" default="-1.0"/>
+  <arg name="yaw" default="0.0"/>
+  
+  <!-- Jetbot -->
+  <!-- Get the robot description -->
+  <include file="$(find jetbot_description)/launch/description.launch">
+    <arg name="pointcloud_enable" value="$(arg pointcloud_enable)" />
+    <arg name="realsense_enable" value="$(arg realsense_enable)" />
+    <arg name="lidar_enable" value="$(arg lidar_enable)"/>
+    <arg name="visualize_laser" value="$(arg visualize_laser)"/>
+    <arg name="imu_enable" value="$(arg imu_enable)"/>
+    <arg name="ultrasonic_enable" value="$(arg ultrasonic_enable)"/>    
+  </include>  
+
+  <!-- SLAM: Gmapping, Cartographer, Hector, Karto, Frontier_exploration, RTAB-Map -->
+  <include file="$(find jetbot_slam)/launch/jetbot_$(arg slam_methods).launch">
+    <arg name="configuration_basename" value="$(arg configuration_basename)"/>
+  </include>
+
+  <!-- controller manager for any slam except cartographer -->
+  <include file="$(find jetbot_control)/launch/jetbot_controller_manager.launch" unless="$(eval arg('slam_methods') == 'cartographer')" />
+
+  <!-- rviz -->
+  <include file="$(find jetbot_viz)/launch/view_model.launch" >
+    <arg name="pointcloud_enable" value="$(arg pointcloud_enable)"/>
+    <arg name="realsense_enable" value="$(arg realsense_enable)"/>
+    <arg name="lidar_enable" value="$(arg lidar_enable)"/>
+    <arg name="visualize_laser" value="$(arg visualize_laser)"/>
+    <arg name="imu_enable" value="$(arg imu_enable)"/>
+    <arg name="gps_enable" value="$(arg gps_enable)"/>
+    <arg name="ultrasonic_enable" value="$(arg ultrasonic_enable)"/>
+    <arg name="rvizconfig" value="$(arg rvizconfig)"/> 
+  </include>
+</launch>
