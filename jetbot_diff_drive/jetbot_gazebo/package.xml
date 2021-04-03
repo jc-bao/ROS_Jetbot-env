@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>jetbot_gazebo</name>
+  <version>0.0.0</version>
+  <description>Jetbot AI Kit Simulator bringup</description>
+
+  <author email="issaiass@hotmail.com">Rangel Alvarado</author>
+
+  <maintainer email="issaiass@hotmail.com">Rangel Alvarado</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://daqsyspty.com/</url>
+  <url type="bugtracker">https://github.com/issaiass/jetbot_simulator/issues</url>
+  <url type="repository">https://github.com/issaiass/jetbot_simulator</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roslaunch</build_depend>
+
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>gazebo_plugins</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>gazebo_ros_control</exec_depend>
+  <exec_depend>hector_gazebo_plugins</exec_depend>
+  <exec_depend>jetbot_control</exec_depend>
+  <exec_depend>jetbot_description</exec_depend>
+  <exec_depend>realsense_gazebo_plugin</exec_depend>
+  <exec_depend>roslaunch</exec_depend>
+  <exec_depend>rostopic</exec_depend>
+
+  <!-- Future implementation -->
+  <!--exec_depend>pointcloud_to_laserscan</exec_depend-->
+
+  <export>
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>  
+  </export>
+</package>

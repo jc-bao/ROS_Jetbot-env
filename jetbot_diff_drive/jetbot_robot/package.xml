@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>jetbot_robot</name>
+  <version>0.0.1</version>
+  <description>Metapackage for Jetbot AI Kit robot software</description>
+
+  <maintainer email="issaiass@hotmail.com">Rangel Alvarado</maintainer>
+
+  <license>CCSA2.0</license>
+
+  <url type="website">http://ros.org/wiki/husky_robot</url>
+  <url type="bugtracker">https://github.com/issaiass/jetbot/issues</url>
+  <url type="repository">https://github.com/issaiass/jetbot</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- future implementation of hardware control -->
+  <!--exec_depend>jetbot_bringup</exec_depend-->
+  <!--exec_depend>jetbot_base</rexec_depend-->
+
+  <export>
+    <metapackage/>  
+  </export>
+</package>
